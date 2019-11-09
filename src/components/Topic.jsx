@@ -6,7 +6,7 @@ export default class Topic extends React.Component {
         super()
 
         this.state = {
-            sections: [],
+            sections: ['afternoon projects', 'mini projects'],
             title: ''
         }
     }
@@ -17,7 +17,17 @@ export default class Topic extends React.Component {
 
                 {/* Topic.jsx */}
                 <h2>{topic.name}</h2>
-                <Section />
+                
+
+                {/* MAP OUT SECTIONS..? */}
+                {this.state.sections.map(el => (
+                    
+                    <Section 
+                    key={el.id}
+                    section={el}
+                    />
+
+                ))}
 
             </div>
         )

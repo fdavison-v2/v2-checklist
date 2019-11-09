@@ -12,7 +12,8 @@ export default class Project extends React.Component{
         return(
             <div className="project">
 
-            Project.jsx
+            <p>Project.jsx</p>
+            <button>X</button>
 
             </div>
         )

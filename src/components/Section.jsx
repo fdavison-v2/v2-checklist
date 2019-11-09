@@ -11,10 +11,11 @@ export default class Section extends React.Component{
         }
     }
     render(){
+        const {section} = this.props
         return(
             <section>
 
-                Section.jsx
+            <h3>{section}</h3>
                 <Project />
 
             </section>

@@ -9,10 +9,16 @@
   padding: 25px;
 }
 
+.topic, section, .project {
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
 /* BACKGROUND */
 .App {
   background: gray;
-  height: 100vh;
+  height: 100%;
+  padding: 0 0 25px 0;
 }
 
 /* HEADER */
@@ -28,7 +34,7 @@ header {
 
 .title h2 {
   font-family: 'Economica', sans-serif;
-  text-align: left;
+  /* text-align: left; */
   /* margin-left: 50px; */
   font-weight: 900;
   font-size: 3rem;
@@ -38,11 +44,41 @@ header {
 .topic {
   /* border: solid red; */
   background: lightgray;
-  margin: 10px auto;
-  border-radius: 5px;
 }
 
 .topic h2 {
-  text-align: left;
+  /* text-align: left; */
+}
+
+/* SECTIONS */
+section {
+  /* border: solid yellow; */
+  margin: 4px auto;
+  /* background: white; */
+}
+
+/* PROJECTS */
+.project {
+  background: white;
+  font-size: 1rem;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* buttons */
+button {
+  height: 1.4rem;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  font-weight: 900;
 }
 
