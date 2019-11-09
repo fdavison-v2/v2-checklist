@@ -7,13 +7,11 @@ export default class Section extends React.Component{
         super()
 
         this.state = {
-            projects : ['fred']
+            projects : []
         }
     }
 
-
-   
-
+    
 
     render(){
         const {section} = this.props
@@ -24,7 +22,12 @@ export default class Section extends React.Component{
         <h3>{section.name} {section.id}</h3>
             <div className="project-buttons">
                     <button>edit</button>
-                    <button>X</button>
+                    
+                    
+                    <button
+                    onClick={()=> this.props.deleteSection(section.id)}
+                    >X</button>
+
                 </div>
             </div>
 

@@ -14,32 +14,34 @@ export default class Topic extends React.Component {
             sectionName: 'new section'
         }
         this.addSection = this.addSection.bind(this)
+        this.deleteSection = this.deleteSection.bind(this)
     }
 
-    // addSection(){
-    //     this.state.sections.push(this.state.sectionName)
-    //     this.updateSections()
-    // }
     addSection(){
-        this.state.section.name = this.state.sectionName
-        this.state.sections.push(this.state.section)
-       this.updateSections() 
-    //    console.log(this.state.section.id)
+        const {section, sections, sectionName} = this.state
+        section.name = sectionName
+        sections.push(section)
+       this.getSections() 
+       this.setState({
+           section: {
+               id: +this.state.section.id + 1
+           }
+        })
     }
 
-
-
-    updateSections(){
+    
+    getSections(){
         this.setState({
             sections: this.state.sections
         })
-        this.setState({
-            section: {
-                id: +this.state.section.id + 1
-            }
-        })
     }
-
+    
+    deleteSection(id){
+        const {sections} = this.state
+        let index = sections.findIndex(section => section.id === +id)
+        sections.splice(index, 1)
+        this.getSections()
+    }
 
     handleChange(e){
         this.setState({
@@ -63,6 +65,7 @@ export default class Topic extends React.Component {
                     key={el.id}
                     section={el}
                     addSection = {this.addSection}
+                    deleteSection ={this.deleteSection}
                     />
 
                 ))}
