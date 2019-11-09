@@ -9,7 +9,21 @@ export default class Topic extends React.Component {
             sections: ['afternoon projects', 'mini projects'],
             title: ''
         }
+        this.addSection = this.addSection.bind(this)
     }
+
+    addSection(){
+        this.state.sections.push('fred')
+        this.updateSections()
+    }
+
+    updateSections(){
+        this.setState({
+            sections: this.state.sections
+        })
+    }
+
+
     render() {
         const {topic} = this.props
         return (
@@ -25,9 +39,12 @@ export default class Topic extends React.Component {
                     <Section 
                     key={el.id}
                     section={el}
+                    addSection = {this.addSection}
                     />
 
                 ))}
+
+                
 
             </div>
         )

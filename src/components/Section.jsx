@@ -10,13 +10,24 @@ export default class Section extends React.Component{
             projects : []
         }
     }
+
+
+   
+
+
     render(){
-        const {section} = this.props
+        const {section, addSection} = this.props
         return(
             <section>
 
             <h3>{section}</h3>
                 <Project />
+
+
+            {/* ADD SECTION BUTTON */}
+            <button
+            onClick={()=>addSection()}
+            >add section</button>
 
             </section>
         )

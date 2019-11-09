@@ -1,19 +1,23 @@
 import React from 'react'
 
-export default class Project extends React.Component{
-    constructor(){
+export default class Project extends React.Component {
+    constructor() {
         super()
 
         this.state = {
 
         }
     }
-    render(){
-        return(
+    render() {
+        return (
             <div className="project">
 
-            <p>Project.jsx</p>
-            <button>X</button>
+                <p>Project.jsx</p>
+
+                <div className="project-buttons">
+                    <button>edit</button>
+                    <button>X</button>
+                </div>
 
             </div>
         )
