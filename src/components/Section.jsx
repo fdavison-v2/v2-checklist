@@ -7,7 +7,7 @@ export default class Section extends React.Component{
         super()
 
         this.state = {
-            projects : []
+            projects : ['fred']
         }
     }
 
@@ -16,18 +16,27 @@ export default class Section extends React.Component{
 
 
     render(){
-        const {section, addSection} = this.props
+        const {section} = this.props
         return(
             <section>
 
-            <h3>{section}</h3>
+            <div className="section-name">
+        <h3>{section.name} {section.id}</h3>
+            <div className="project-buttons">
+                    <button>edit</button>
+                    <button>X</button>
+                </div>
+            </div>
+
+                {/* MAP OUT PROJECTS... */}
+                {this.state.projects.map(el=> (
+
                 <Project />
 
+                ))}
 
-            {/* ADD SECTION BUTTON */}
-            <button
-            onClick={()=>addSection()}
-            >add section</button>
+
+           
 
             </section>
         )

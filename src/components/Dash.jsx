@@ -30,7 +30,6 @@ export default class Dash extends React.Component{
 
 
                 {/* MAP OUT TOPICS... */}
-
                 {this.state.topics.map(el=> (
                     
                     <Topic 
