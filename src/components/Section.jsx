@@ -23,7 +23,6 @@ export default class Section extends React.Component{
             <div className="project-buttons">
                     <button>edit</button>
                     
-                    
                     <button
                     onClick={()=> this.props.deleteSection(section.id)}
                     >X</button>

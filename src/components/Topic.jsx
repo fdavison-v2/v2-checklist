@@ -24,7 +24,7 @@ export default class Topic extends React.Component {
        this.getSections() 
        this.setState({
            section: {
-               id: +this.state.section.id + 1
+               id: +section.id + 1
            }
         })
     }
@@ -50,12 +50,20 @@ export default class Topic extends React.Component {
     }
 
     render() {
-        const {topic} = this.props
+        const {topic, deleteTopic} = this.props
         return (
             <div className="topic">
 
                 {/* Topic.jsx */}
-                <h2>{topic.name}</h2>
+                <div className="topic-buttons">
+                <h2>{topic.name} {topic.id}</h2>
+                    <button>edit</button>
+                    
+                    <button
+                    onClick={()=>deleteTopic(topic.id)}
+                    >X</button>
+
+                </div>
                 
 
                 {/* MAP OUT SECTIONS.. */}

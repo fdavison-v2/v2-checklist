@@ -7,31 +7,27 @@ export default class Dash extends React.Component {
         super()
 
         this.state = {
-            topics: [{
-                id: 1,
-                name: 'javascript'
-            },
-            {
-                id: 2,
-                name: 'react'
-            },
-            {
-                id: 3,
-                name: 'node'
-            },
-            ],
+            topics: [],
             topic: {
                 id: 0,
-                name: 'new topic'
-            }
+                name: ''
+            },
+            topicName: 'new topic'
         }
+        this.deleteTopic = this.deleteTopic.bind(this)
     }
 
 
     addTopic() {
-        const {topics, topic} = this.state
+        const {topics, topic, topicName} = this.state
+        topic.name = topicName
         topics.push(topic)
         this.getTopics()
+        this.setState({
+            topic: {
+                id: topic.id + 1
+            }
+        })
     }
 
     getTopics(){
@@ -39,6 +35,19 @@ export default class Dash extends React.Component {
             topics: this.state.topics
         })
         console.log(this.state.topics)
+    }
+
+    deleteTopic(id){
+        const {topics} = this.state
+        let index = topics.findIndex(topic => topic.id === +id)
+        topics.splice(index, 1)
+        this.getTopics()
+    }
+
+    handleChange(e){
+        this.setState({
+            topicName: e.target.value
+        })
     }
 
     render() {
@@ -54,9 +63,16 @@ export default class Dash extends React.Component {
                     <Topic
                         key={el.id}
                         topic={el}
+                        deleteTopic = {this.deleteTopic}
                     />
 
                 ))}
+
+
+                {/* INPUT */}
+                <input 
+                onChange={(e)=> this.handleChange(e)}
+                type="text"/>
 
                 {/* ADD TOPIC BUTTON */}
                 <button

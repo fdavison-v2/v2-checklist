@@ -86,7 +86,7 @@ button{
   border: 1px solid gray;
 }
 
-.project-buttons button {
+.project-buttons button, .topic-buttons button {
   display: flex;
   align-items: center;
   background: none;
@@ -96,5 +96,14 @@ button{
 
 button:hover {
   font-weight: 700;
+}
+
+.topic-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.topic-buttons button{
+  font-weight: bold;
 }
 
