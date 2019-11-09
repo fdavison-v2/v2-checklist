@@ -14,7 +14,7 @@ export default class Dash extends React.Component{
         return(
             <div className="dash">
 
-                Dash.jsx
+                {/* Dash.jsx */}
                 <Topic />
 
             </div>
