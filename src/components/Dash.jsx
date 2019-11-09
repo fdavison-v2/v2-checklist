@@ -7,7 +7,19 @@ export default class Dash extends React.Component{
         super()
 
         this.state = {
-            topics: []
+            topics: [{
+                id: 1,
+                name: 'javascript'
+            },
+            {
+                id: 2,
+                name: 'react'
+            },
+            {
+                id: 3,
+                name: 'node'
+            },
+            ]
         }
     }
     render(){
@@ -15,7 +27,18 @@ export default class Dash extends React.Component{
             <div className="dash">
 
                 {/* Dash.jsx */}
-                <Topic />
+
+
+                {/* MAP OUT TOPICS... */}
+
+                {this.state.topics.map(el=> (
+                    
+                    <Topic 
+                    key = {el.id}
+                    topic = {el}
+                    />
+
+                ))}
 
             </div>
         )

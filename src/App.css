@@ -5,8 +5,14 @@
 /* defaults */
 .title, .topic {
   max-width: 1200px;
-  margin: 0 auto;
+  margin:  auto;
   padding: 25px;
+}
+
+/* BACKGROUND */
+.App {
+  background: gray;
+  height: 100vh;
 }
 
 /* HEADER */
@@ -30,6 +36,13 @@ header {
 
 /* TOPIC */
 .topic {
-  border: solid red;
+  /* border: solid red; */
+  background: lightgray;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.topic h2 {
+  text-align: left;
 }
 

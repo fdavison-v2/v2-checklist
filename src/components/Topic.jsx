@@ -1,21 +1,23 @@
 import React from 'react'
 import Section from './Section'
 
-export default class Topic extends React.Component{
-    constructor(){
+export default class Topic extends React.Component {
+    constructor() {
         super()
 
         this.state = {
-            sections : [],
+            sections: [],
             title: ''
         }
     }
-    render(){
-        return(
+    render() {
+        const {topic} = this.props
+        return (
             <div className="topic">
 
-            Topic.jsx
-            <Section />
+                {/* Topic.jsx */}
+                <h2>{topic.name}</h2>
+                <Section />
 
             </div>
         )
