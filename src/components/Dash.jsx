@@ -60,6 +60,9 @@ export default class Dash extends React.Component {
         })
         //display new topics array
         this.getTopics()
+        this.setState({
+            editTopicName: 'new topic'
+        })
     }
 
     changeName(e){
