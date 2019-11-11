@@ -53,7 +53,7 @@ export default class Topic extends React.Component {
         this.setState({
             editName: e.target.value
         })
-        console.log(e.target.value)
+        // console.log(e.target.value)
     }
 
     render() {
@@ -73,7 +73,7 @@ export default class Topic extends React.Component {
 
 
                     <input 
-                    onChange={(e)=> this.handleChange2(e)}
+                    onChange={(e)=> this.props.changeName(e.target.value)}
                     type="text" />
 
                     <button

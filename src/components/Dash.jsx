@@ -13,10 +13,11 @@ export default class Dash extends React.Component {
                 name: ''
             },
             topicName: 'new topic',
-            editTopicName: 'fred'
+            editTopicName: 'new topic'
         }
         this.deleteTopic = this.deleteTopic.bind(this)
         this.editTopic = this.editTopic.bind(this)
+        this.changeName = this.changeName.bind(this)
     }
 
 
@@ -46,15 +47,26 @@ export default class Dash extends React.Component {
     }
     
     editTopic(id){
-        console.log(id)
-        const {topics, topic, editTopicName} = this.state
+        const {topics, editTopicName} = this.state
+        // this.changeName()
+        // console.log(editTopicName)
+        //find right entry
         let index = topics.findIndex(topic => topic.id === +id)
+        //splice out original, place in new
         topics.splice(index, 1, {name: editTopicName, id: id})
-        console.log(editTopicName)
+        //update topics array
         this.setState({
             topics: topics
         })
+        //display new topics array
         this.getTopics()
+    }
+
+    changeName(e){
+        this.setState({
+            editTopicName: e
+        })
+        console.log(e)
     }
 
     handleChange(e){
@@ -78,6 +90,7 @@ export default class Dash extends React.Component {
                         topic={el}
                         deleteTopic = {this.deleteTopic}
                         editTopic = {this.editTopic}
+                        changeName = {this.changeName}
                     />
 
                 ))}
