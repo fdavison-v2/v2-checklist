@@ -11,85 +11,110 @@ export default class Topic extends React.Component {
                 id: 0,
                 name: ''
             },
-            sectionName: 'new section'
+            sectionName: 'new section',
+            // editName: ''
         }
         this.addSection = this.addSection.bind(this)
         this.deleteSection = this.deleteSection.bind(this)
     }
 
-    addSection(){
-        const {section, sections, sectionName} = this.state
+    addSection() {
+        const { section, sections, sectionName } = this.state
         section.name = sectionName
         sections.push(section)
-       this.getSections() 
-       this.setState({
-           section: {
-               id: +section.id + 1
-           }
+        this.getSections()
+        this.setState({
+            section: {
+                id: +section.id + 1
+            }
         })
     }
 
-    
-    getSections(){
+    getSections() {
         this.setState({
             sections: this.state.sections
         })
     }
-    
-    deleteSection(id){
-        const {sections} = this.state
+
+    deleteSection(id) {
+        const { sections } = this.state
         let index = sections.findIndex(section => section.id === +id)
         sections.splice(index, 1)
         this.getSections()
     }
 
-    handleChange(e){
+    handleChange(e) {
         this.setState({
             sectionName: e.target.value
         })
     }
 
+    handleChange2(e){
+        this.setState({
+            editName: e.target.value
+        })
+        console.log(e.target.value)
+    }
+
     render() {
-        const {topic, deleteTopic} = this.props
+        const { topic, deleteTopic, editTopic } = this.props
         return (
             <div className="topic">
 
-                {/* Topic.jsx */}
+
                 <div className="topic-buttons">
-                <h2>{topic.name} {topic.id}</h2>
+                    <h2>{topic.name} {topic.id}</h2>
                     <button>edit</button>
-                    
+
+
+
+                    {/* EDIT TOGGLE */}
+                    <div className="topic-edit">
+
+
+                    <input 
+                    onChange={(e)=> this.handleChange2(e)}
+                    type="text" />
+
                     <button
-                    onClick={()=>deleteTopic(topic.id)}
+                    onClick={()=> editTopic(topic.id)}
+                    >done</button>
+
+                    </div>
+
+
+
+                    <button
+                        onClick={() => deleteTopic(topic.id)}
                     >X</button>
 
                 </div>
-                
+
 
                 {/* MAP OUT SECTIONS.. */}
                 {this.state.sections.map(el => (
-                    
-                    <Section 
-                    key={el.id}
-                    section={el}
-                    addSection = {this.addSection}
-                    deleteSection ={this.deleteSection}
+
+                    <Section
+                        key={el.id}
+                        section={el}
+                        addSection={this.addSection}
+                        deleteSection={this.deleteSection}
                     />
 
                 ))}
 
 
                 {/* SECTION NAME INPUT */}
-                 <input 
-                 onChange={(e)=>this.handleChange(e)}
-                 type="text"/>
+                <input
+                    onChange={(e) => this.handleChange(e)}
+                    type="text" />
 
 
 
-                 {/* ADD SECTION BUTTON */}
-            <button
-            onClick={()=>this.addSection()}
-            >add section</button>
+                {/* ADD SECTION BUTTON */}
+                <button
+                    onClick={() => this.addSection()}
+                >add section</button>
 
 
             </div>

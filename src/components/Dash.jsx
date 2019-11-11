@@ -12,9 +12,11 @@ export default class Dash extends React.Component {
                 id: 0,
                 name: ''
             },
-            topicName: 'new topic'
+            topicName: 'new topic',
+            editTopicName: 'fred'
         }
         this.deleteTopic = this.deleteTopic.bind(this)
+        this.editTopic = this.editTopic.bind(this)
     }
 
 
@@ -34,13 +36,24 @@ export default class Dash extends React.Component {
         this.setState({
             topics: this.state.topics
         })
-        console.log(this.state.topics)
     }
 
     deleteTopic(id){
         const {topics} = this.state
         let index = topics.findIndex(topic => topic.id === +id)
         topics.splice(index, 1)
+        this.getTopics()
+    }
+    
+    editTopic(id){
+        console.log(id)
+        const {topics, topic, editTopicName} = this.state
+        let index = topics.findIndex(topic => topic.id === +id)
+        topics.splice(index, 1, {name: editTopicName, id: id})
+        console.log(editTopicName)
+        this.setState({
+            topics: topics
+        })
         this.getTopics()
     }
 
@@ -64,6 +77,7 @@ export default class Dash extends React.Component {
                         key={el.id}
                         topic={el}
                         deleteTopic = {this.deleteTopic}
+                        editTopic = {this.editTopic}
                     />
 
                 ))}

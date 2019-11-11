@@ -107,3 +107,12 @@ button:hover {
   font-weight: bold;
 }
 
+/* Edit fields */
+.topic-edit {
+  border: solid yellow;
+  display: flex;
+}
+
+.topic-edit button {
+  background: yellow;
+}
