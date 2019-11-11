@@ -48,8 +48,6 @@ export default class Dash extends React.Component {
     
     editTopic(id){
         const {topics, editTopicName} = this.state
-        // this.changeName()
-        // console.log(editTopicName)
         //find right entry
         let index = topics.findIndex(topic => topic.id === +id)
         //splice out original, place in new
@@ -60,6 +58,7 @@ export default class Dash extends React.Component {
         })
         //display new topics array
         this.getTopics()
+        //reset default to 'new topic'
         this.setState({
             editTopicName: 'new topic'
         })
@@ -69,7 +68,6 @@ export default class Dash extends React.Component {
         this.setState({
             editTopicName: e
         })
-        console.log(e)
     }
 
     handleChange(e){

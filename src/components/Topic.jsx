@@ -12,7 +12,7 @@ export default class Topic extends React.Component {
                 name: ''
             },
             sectionName: 'new section',
-            // editName: ''
+            editTopic: false
         }
         this.addSection = this.addSection.bind(this)
         this.deleteSection = this.deleteSection.bind(this)
@@ -49,39 +49,55 @@ export default class Topic extends React.Component {
         })
     }
 
-    handleChange2(e){
+    // handleChange2(e){
+    //     this.setState({
+    //         editName: e.target.value
+    //     })
+    //     // console.log(e.target.value)
+    // }
+
+    toggleEdit(){
         this.setState({
-            editName: e.target.value
+            editTopic: !this.state.editTopic
         })
-        // console.log(e.target.value)
+    }
+
+    doneButton(){
+        this.toggleEdit()
+        this.props.editTopic()
     }
 
     render() {
-        const { topic, deleteTopic, editTopic } = this.props
+        const { topic, deleteTopic} = this.props
+        const {editTopic} = this.state
         return (
             <div className="topic">
 
 
                 <div className="topic-buttons">
                     <h2>{topic.name} {topic.id}</h2>
-                    <button>edit</button>
+                    
+                    
+                    <button
+                    onClick={()=> this.toggleEdit()}
+                    >edit</button>
 
 
 
                     {/* EDIT TOGGLE */}
-                    <div className="topic-edit">
+                    {editTopic ? 
 
+                    <div className="topic-edit">
 
                     <input 
                     onChange={(e)=> this.props.changeName(e.target.value)}
                     type="text" />
 
                     <button
-                    onClick={()=> editTopic(topic.id)}
+                    onClick={()=> this.doneButton()}
                     >done</button>
 
-                    </div>
-
+                    </div> : null}
 
 
                     <button
