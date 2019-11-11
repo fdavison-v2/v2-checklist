@@ -14,6 +14,7 @@ export default class Section extends React.Component{
             },
             projectName: 'new project'
         }
+        this.deleteProject = this.deleteProject.bind(this)
     }
 
     addProject(){
@@ -31,6 +32,19 @@ export default class Section extends React.Component{
     getProjects(){
         this.setState({
             projects: this.state.projects
+        })
+    }
+
+    deleteProject(id){
+        const {projects} = this.state
+        let index = projects.findIndex(project => project.id === +id)
+        projects.splice(index, 1)
+        this.getProjects()
+    }
+
+    handleChange(e){
+        this.setState({
+            projectName: e.target.value
         })
     }
 
@@ -57,14 +71,24 @@ export default class Section extends React.Component{
                 <Project 
                 key = {el.id}
                 project = {el}
+                deleteProject = {this.deleteProject}
                 />
 
                 ))}
+
+
+
+            {/* ADD PROJECT INPUT FIELD */}
+            <input 
+            onChange={(e)=> this.handleChange(e)}
+            type="text"/>
 
             {/* ADD PROJECT BUTTON */}
             <button
             onClick={()=> this.addProject()}
             >add project</button>
+
+            <hr/>
            
 
             </section>

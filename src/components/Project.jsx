@@ -17,7 +17,9 @@ export default class Project extends React.Component {
 
                 <div className="project-buttons">
                     <button>edit</button>
-                    <button>X</button>
+                    <button
+                     onClick={()=> this.props.deleteProject(project.id)}
+                     >X</button>
                 </div>
 
             </div>

@@ -10,7 +10,7 @@
 }
 
 .topic, section, .project {
-  margin: 10px auto;
+  margin: 5px auto;
   border-radius: 5px;
 }
 
@@ -66,11 +66,11 @@ section h3 {
 /* PROJECTS */
 .project {
   background: white;
-  font-size: 1rem;
-  padding: 5px 10px;
+  padding: 0px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border: 1px solid darkgray;
 }
 
 .project-buttons {
