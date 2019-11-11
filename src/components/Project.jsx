@@ -9,10 +9,11 @@ export default class Project extends React.Component {
         }
     }
     render() {
+        const {project} = this.props
         return (
             <div className="project">
 
-                <p>Project.jsx</p>
+                <p>{project.name} {project.id}</p>
 
                 <div className="project-buttons">
                     <button>edit</button>
