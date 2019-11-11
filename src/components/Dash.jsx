@@ -13,7 +13,7 @@ export default class Dash extends React.Component {
                 name: ''
             },
             topicName: 'new topic',
-            editTopicName: 'new topic'
+            editTopicName: ''
         }
         this.deleteTopic = this.deleteTopic.bind(this)
         this.editTopic = this.editTopic.bind(this)
@@ -48,20 +48,20 @@ export default class Dash extends React.Component {
     
     editTopic(id){
         const {topics, editTopicName} = this.state
-        //find right entry
-        let index = topics.findIndex(topic => topic.id === +id)
-        //splice out original, place in new
-        topics.splice(index, 1, {name: editTopicName, id: id})
-        //update topics array
-        this.setState({
-            topics: topics
-        })
-        //display new topics array
-        this.getTopics()
-        //reset default to 'new topic'
-        this.setState({
-            editTopicName: 'new topic'
-        })
+        if (editTopicName){
+
+            //find right entry
+            let index = topics.findIndex(topic => topic.id === +id)
+            //splice out original, place in new
+            topics.splice(index, 1, {name: editTopicName, id: id})
+            //update topics array
+            this.setState({
+                topics: topics
+            })
+            //display new topics array
+            this.getTopics()
+            this.changeName('')
+        }
     }
 
     changeName(e){
